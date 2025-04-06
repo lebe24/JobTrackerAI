@@ -24,11 +24,11 @@ const JobBoard = () => {
       job.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       job.description.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesLocation = locationFilter 
+    const matchesLocation = locationFilter && locationFilter !== "all-locations"
       ? job.location.toLowerCase().includes(locationFilter.toLowerCase())
       : true;
     
-    const matchesJobType = jobTypeFilter
+    const matchesJobType = jobTypeFilter && jobTypeFilter !== "all-types"
       ? job.jobType.toLowerCase() === jobTypeFilter.toLowerCase()
       : true;
     
@@ -64,7 +64,7 @@ const JobBoard = () => {
                 <SelectValue placeholder="Location" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Locations</SelectItem>
+                <SelectItem value="all-locations">All Locations</SelectItem>
                 <SelectItem value="remote">Remote</SelectItem>
                 <SelectItem value="san francisco">San Francisco</SelectItem>
                 <SelectItem value="new york">New York</SelectItem>
@@ -78,7 +78,7 @@ const JobBoard = () => {
                 <SelectValue placeholder="Job Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Types</SelectItem>
+                <SelectItem value="all-types">All Types</SelectItem>
                 <SelectItem value="full-time">Full-time</SelectItem>
                 <SelectItem value="part-time">Part-time</SelectItem>
                 <SelectItem value="contract">Contract</SelectItem>

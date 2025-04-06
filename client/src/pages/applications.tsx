@@ -14,7 +14,7 @@ const Applications = () => {
   });
   
   // Filter applications based on status
-  const filteredApplications = statusFilter
+  const filteredApplications = statusFilter && statusFilter !== "all-statuses"
     ? applications.filter(app => app.status === statusFilter)
     : applications;
   
@@ -45,7 +45,7 @@ const Applications = () => {
               <SelectValue placeholder="Filter by status" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Statuses</SelectItem>
+              <SelectItem value="all-statuses">All Statuses</SelectItem>
               <SelectItem value="Applied">Applied</SelectItem>
               <SelectItem value="In Review">In Review</SelectItem>
               <SelectItem value="Interview">Interview</SelectItem>
@@ -58,7 +58,7 @@ const Applications = () => {
         </div>
       </div>
       
-      {statusFilter ? (
+      {statusFilter && statusFilter !== "all-statuses" ? (
         <Card>
           <CardHeader>
             <CardTitle>Applications {statusFilter ? `- ${statusFilter}` : ""}</CardTitle>
